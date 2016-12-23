@@ -74,22 +74,4 @@ In the app folder/directory containing server.js
 
 openssl was used to generate the keys in /ssl these should never be used for a production system.
  
-### Google Recaptcha keys:
-
-You will need to have a google recaptcha key pair to use the recaptcha submit form.
-https://www.google.com/recaptcha/intro/comingsoon/invisiblebeta.html
-
-The private key needs to be placed in secrets.js in the function googleReCAPTCHA_KEY().
-
-The public key needs to placed in /_ngClient/js/controllers/controllers.js in the recaptchaCtrl controller.
-Insert your public key instead of the "set me".
-
-$scope.reCapthchaPublicKey = "set me ";
  
-### Demo:
-
-There may be examples running at:
-
-https://servergeneric.eu-gb.mybluemix.net
-
-https://servergeneric.herokuapp.com
