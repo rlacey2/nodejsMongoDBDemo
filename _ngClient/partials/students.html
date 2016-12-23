@@ -1,0 +1,168 @@
+<div class="row">
+<div class="col-md-10" >
+<h1>Students CRUD mongodb</h1>
+<p>
+Password exposed on server for mongodb!
+<br>
+Remember to use pagination with large data sets!
+<hr>
+ 
+	<div class="row">
+		<div class="col-md-3">
+		  <button type="button" ng-click="loadStudents()" ng-disabled="asynchWait" >Load Students</button>	   
+		</div>
+		<div class="col-md-3">
+		  <button type="button" ng-click="deleteStudents()" ng-disabled="asynchWait">Delete Students</button>	   
+		</div>		
+		<div class="col-md-3">
+		  <button type="button" ng-click="newStudent()" ng-disabled="asynchWait">New Student</button>	   
+		</div>			
+	</div>
+<hr> 
+
+  <form name="myForm">
+  
+  <div class="row">
+    <div class="col-md-3">
+		<label for="singleSelect">Course: </label><br>
+		<select name="singleSelect" ng-model="filterData.course">
+		
+		  <option value="">All</option>
+		  <option value="applied">applied</option>
+		  <option value="forensics">forensics</option>
+		  <option value="ssd">ssd</option>
+	   
+		</select>    
+	</div>
+    <div class="col-md-3">
+		<label for="singleSelect">Year: </label><br>
+		<select name="singleSelect" ng-model="filterData.year">
+		  <option value="">All</option>
+		  <option value="1">1</option>
+		  <option value="2">2</option>
+		  <option value="3">3</option>
+		  <option value="4">4</option>	  
+		</select>    
+	</div>  
+    <div class="col-md-3">
+		<button type="button" ng-click="requeryStudents(filterData)">Requery</button>	   
+	</div>	
+    <div class="col-md-3">
+		<button type="button" ng-click="reset({})">Reset</button>
+	</div>	
+  </div>
+ 
+  </form>
+  <br>
+  <form name="myForm2">
+    <label>Student JSON:
+    <input type="text" name="input" ng-model="newStudentRaw.json" ng-trim="true">
+  </label>
+  <button type="button" ng-click="newStudentRaw.json =''">X</button>	   
+  <button type="button" ng-click="insertStudent2()" ng-disabled="newStudentRaw.json.length==0" >v2 Insert</button> Expects valid document json structure.	   
+ 
+   </form>
+   {{newStudentRaw | json}} -- {{newStudentRaw.json.length}}
+<hr>
+<p>
+ Record(s): {{students.length}} <p>
+ 
+ <hr>
+ 
+ <div class="row">
+ <div class="col-md-1">
+	#No
+ </div>
+  <div class="col-md-3">
+    Name
+ </div>
+  <div class="col-md-3">
+    Course
+ </div>
+  <div class="col-md-1">
+    Year
+ </div>
+
+</div> 
+  
+ <div id="showStudents" >
+ <div id="{{s._id}}" class="row" ng-repeat="s in students  | orderBy:['name','course', 'year'] track by s._id"
+ ng-include src="getTemplate(s)"
+ >
+ <!--
+ <div class="col-md-1">
+ {{$index+1}}
+ </div>
+  <div class="col-md-3"    >
+    {{s.name}}
+ </div>
+  <div class="col-md-3">
+    {{s.course}}
+ </div>
+  <div class="col-md-1">
+    {{s.year}}
+ </div>
+   <div class="col-md-1">
+     <button type="button" ng-click="deleteStudent($index,s._id)">X</button>	 
+ </div> 
+ -->
+</div>
+</div>
+ 
+</div> 
+</div> 
+  
+<div id="editStudent" ng-show="edittingStudent">
+
+
+
+
+	<div class="container">
+ 
+    <div class="container">
+
+			<div class="row">
+				<div class="col-md-8">
+				   <h3>{{editTitle}}</h3>
+				</div>	
+			
+			</div>	
+		
+			<label ng-hide="editData.index==-1">#No
+				{{editData.index}}
+			</label>
+			<br>
+			<label>Name
+				<input type="text" ng-model="editData.name" class="form-control"/>
+			</label>
+			<br>
+			<label>Course
+				<input type="text" ng-model="editData.course" class="form-control"/>
+			</label>
+			<br>			
+			<label>Year
+				<input type="text" ng-model="editData.year" class="form-control"/>
+			</label>	
+	</div>
+	
+	
+ </div>
+ 
+	<div class="row">
+		<div class="col-md-8">
+		   
+		</div>	
+		<div class="col-md-2">
+		  <button type="button" ng-click="saveStudent()" ng-disabled="asynchWait" >Save</button>	   
+		</div>
+		<div class="col-md-2">
+		  <button type="button" ng-click="cancelStudentEdit()" ng-disabled="asynchWait">Cancel</button>	   
+		</div>		
+	</div> 
+</div>
+
+
+
+<div id="editStudentLayer" ng-show="edittingStudent" >
+ <!-- to shield the other inputs during an edit -->
+</div>

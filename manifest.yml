@@ -1,0 +1,9 @@
+applications:
+- path: .
+  memory: 512M
+  instances: 1
+  domain: eu-gb.mybluemix.net
+  name: mongodb001
+  host: mongodb001
+  command: node server.js
+  disk_quota: 512M

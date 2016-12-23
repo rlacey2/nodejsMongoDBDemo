@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html> 
+<head>
+<meta charset="UTF-8">
+<title>_mongodb demo</title>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap-theme.min.css">	
+
+<link href="css/main.css" rel="stylesheet" />
+
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script> 	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<!-- Optional theme -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+	 
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular.js" ></script>
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-route.js" ></script>
+	
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/angularjs/1.5.8/angular-resource.js" ></script>
+	
+<!-- http://bootstrap-notify.remabledesigns.com/ 
+     css pasted into main.css
+	 here also:
+	 
+	 https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/css/bootstrap-notify.css
+
+-->	
+<script type="text/javascript" src="/js_thirdparty/notify/bootstrap-notify.js"></script> 	 	
+<script type="text/javascript" src="/js_thirdparty/notify/angular-lightify.js"></script>   	
+	
+	
+<script type="text/javascript" src="js/controllers/controllers.js"  > </script>
+<script type="text/javascript" src="js/app.js" > </script>
+<!--
+<link href="bower_components/angular-xeditable/dist/css/xeditable.css" rel="stylesheet">
+<script src="bower_components/angular-xeditable/dist/js/xeditable.js"></script>
+-->
+ 
+</head>
+
+<body ng-app="angularnodeApp">
+ 
+     <script type="text/ng-template" id="displaystudent">
+ 
+		 <div class="col-md-1">
+		 {{$index+1}}
+		 </div>
+		  <div class="col-md-3"   >
+			{{s.name}}
+		 </div>
+		  <div class="col-md-3">
+			{{s.course}}
+		 </div>
+		  <div class="col-md-1">
+			{{s.year}}
+		 </div>
+		   <div class="col-md-1">
+			 <button type="button" ng-click="editStudent($index,s._id,s)">Edit</button>	 		   
+		 </div>
+		   <div class="col-md-1">
+			 <button type="button" ng-click="deleteStudent($index,s._id,s)">X</button>	 
+		 </div>		
+		  <div class="col-md-1">
+			{{s._id}}
+		 </div>		 
+    </script>
+ 
+   <div class="row">
+         <!-- HEADER AND NAVBAR -->
+        <header>
+            <nav class="navbar navbar-default navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#home">Monogodb Demo</a>
+ 
+                </div>
+
+                <ul class="nav navbar-nav navbar-right">
+									<li><a href="#home"><i>Home</i></a></li>
+	 
+									<li><a href="#students"><i>Students</i></a></li>
+									<li><a href="#about"><i>About</i></a></li>
+		
+                </ul>		 
+            </div>
+            </nav>
+			
+        </header>
+
+</div>
+ 
+  
+					   <div class="row">
+					   <div class="col-md-1" ></div>
+					   <!-- content placed here from routing -->
+					   <div class="col-md-10" >
+							<div ng-view ></div>
+							</div>
+						<div class="col-md-1" ></div>
+					  </div>
+
+<div nrz-lightify-messages position="top-right"></div>
+ 
+</body>
+</html>
+ 
