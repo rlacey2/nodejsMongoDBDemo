@@ -52,12 +52,9 @@ var helmet = require('helmet');
 var connectionListener = false;
  
 var app = express();
-
-
-	
+ 
 app.use(compression()); // must be first, GZIP all assets https://www.sitepoint.com/5-easy-performance-tweaks-node-js-express/
-	
-                                     // log every request to the console
+                                    // log every request to the console
 app.use(bodyParser.urlencoded({'extended':'true'}));            // parse application/x-www-form-urlencoded
 app.use(bodyParser.json());                                     // parse application/json
 app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse application/vnd.api+json as json
@@ -79,8 +76,7 @@ if (runtime.isLocalHost) {
  // windows if openssl installed
  // set OPENSSL_CONF=C:\Program Files (x86)\OpenSSL-Win32\bin\openssl.cfg
  // C:\Program Files (x86)\OpenSSL-Win32\bin\openssl genrsa -out test-key.pem 1024
- 
- 
+
 // test ssl keys with openssl installed - Google for your platform  https://www.openssl.org/
 // openssl genrsa -out test-key.pem 1024 
 // openssl req -new -key test-key.pem -out certrequest.csr
@@ -124,13 +120,10 @@ if (runtime.isLocalHost) {
 	{ 
 		app.listen(runtime.port, function() {
 		    console.log (runtime.architecture + ' server startup ok on port: ' + runtime.port); 
-		}); 		
-		
+		}); 			
 	}		
-
 }    
  
-
 //app.use(logger('dev'));  // log every request to the console   morgan
 app.use(bodyParser.json());
 
@@ -155,8 +148,6 @@ app.use( // alias to third party js code etc
 			"/js_thirdparty", //the URL throught which you want to access   content
 			express.static(__dirname + '/js_thirdparty')  
 				); 				
- 
- 					
 
 console.log(__dirname + '/_ngClient');
 
@@ -263,11 +254,8 @@ app.post('/api/v1/student', function(req, res) {   // update a student
        console.log("student entry saved");
    	   res.status(200);
 	   res.json(result);	    
-	});	
-	
-	
+	});		
 });
-	
  
 app.get('/api/v1/students', function(req, res) { // allows a browser url call
   
@@ -277,7 +265,6 @@ app.get('/api/v1/students', function(req, res) { // allows a browser url call
 	
 	getStudents(req,res,findOptions);
 });
-
 
 app.post('/api/v1/students', function(req, res) { // need the post method to pass filters in the body
   
