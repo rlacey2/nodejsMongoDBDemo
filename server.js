@@ -21,7 +21,7 @@ var path = require('path');
 // developer code
 var platform = require('./routes/server_nodejs/platform.js');
 var runtime = platform.configure(); 
-var secrets  = require('./secrets.js');  
+var secrets  = require('./secrets.js');   
 
 //console.log(secrets.mongodb.connectionStr());
  
